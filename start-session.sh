@@ -34,7 +34,7 @@ function website {
     tmux send-keys -t website:3 "git status" C-m
 
     tmux select-window -t website:0
-    tmux attach-session -t website
+    tmux -2 attach-session -t website
 } # end function website
 
 "$@"
