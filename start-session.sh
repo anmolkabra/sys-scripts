@@ -8,9 +8,10 @@ function website {
     if (tmux has-session -t website 2> /dev/null); then
         tmux attach -t website
     else
-        # https://github.com/anmolkabra/gh_website
-        BASE="/home/anmolkabra/Desktop/gh_website"
-        cd $BASE
+        # https://github.com/anmolkabra/anmolkabra.github.io
+        # change to website dir on the machine
+        WEBSITE_REPO_DIR="~/Desktop/anmolkabra.github.io"
+        cd $WEBSITE_REPO_DIR
 
         tmux start-server
         tmux new-session -d -s website -n files
@@ -20,12 +21,11 @@ function website {
         tmux new-window -t website:4 -n git
 
         # files window
-        tmux send-keys -t website:0 "l" C-m
+        tmux send-keys -t website:0 "ls -al" C-m
 
         # write window
-        tmux send-keys -t website:1 "l" C-m
         tmux split-window -h -p 50 -t website:1
-        tmux send-keys -t website:1 "cd ./_posts && l" C-m
+        tmux send-keys -t website:1 "cd ./_out && ls -al" C-m
         tmux select-pane -t website:1.0
 
         # vhost window
