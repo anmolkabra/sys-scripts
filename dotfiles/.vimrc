@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 set encoding=utf-8
 
-let mapleader="<space>"
+let mapleader=","
 
 " set the runtime path to include Vundle and set path where Vundle should install plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -26,7 +26,7 @@ Plugin 'vim-scripts/indentpython.vim'
 " Python code completion
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_autoclose_preview_window_after_completion=1   " close autocomplete win
-map <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR> " goto def
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR> " goto def
 let g:ycm_python_binary_path = 'python'     " search for first python exec and attach the file to that env
 
 " Syntax checking on exit
@@ -58,6 +58,10 @@ let g:airline_powerline_fonts = 1
 
 " Git information
 Plugin 'airblade/vim-gitgutter'
+
+" Focus works correctly when vim in tmux
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+
 " """"""""""""""""""""""
 " ...until here
 " """"""""""""""""""""""
