@@ -1,8 +1,72 @@
 " Compatibility
 set nocompatible
+filetype off
+set encoding=utf-8
 
+let mapleader="<space>"
+
+" set the runtime path to include Vundle and set path where Vundle should install plugins
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" """"""""""""""""""""""
+" more plugins go here...
+" """"""""""""""""""""""
+
+" Python code folding compatible with PEP 8
+Plugin 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview=1    " enable docstring view when code folded
+
+" Python indentation compatible with PEP 8
+Plugin 'vim-scripts/indentpython.vim'
+
+" Python code completion
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_autoclose_preview_window_after_completion=1   " close autocomplete win
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> " goto def
+
+" Syntax checking on exit
+Plugin 'vim-syntastic/syntastic'
+
+" Python PEP 8 checking
+Plugin 'nvie/vim-flake8'
+
+" Git
+Plugin 'tpope/vim-fugitive'
+
+" Solarized theme
+Plugin 'altercation/vim-colors-solarized'
+
+" File directory
+Plugin 'scroolose/nerdtree'
+let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
+map <C-n> :NERDTreeToggle<CR>   " Ctrl-n toggles NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " only NERDTree open in vim, close
+
+" Git support for nerdtree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Powerline in vim
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+
+" Git information
+Plugin 'airblade/vim-gitgutter'
+" """"""""""""""""""""""
+" ...until here
+" """"""""""""""""""""""
+call vundle#end()
+filetype plugin indent on
 " Color and Style
+let python_highlight_all=1
 syntax enable				" enable syntax highlighting
+
+set background=dark
+colorscheme solarized
 
 " Display Line Numbers
 set number				" display line numbers
@@ -24,6 +88,18 @@ autocmd FileType make set noexpandtab	" don't convert tabs to spaces for Makefil
 set tabstop=4				" 1 tab == 4 spaces
 set shiftwidth=4			" number of spaces to use for each auto-indent, e.g. >>, << commands
 set softtabstop=4
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" code folding
+set foldmethod=indent
+set foldlevel=99
+
+nnoremap <space> za         " enable folding with spacebar
 
 " Jump to last known position in a file just after opening it
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
