@@ -45,6 +45,7 @@ Plugin 'scroolose/nerdtree'
 let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
 map <C-n> :NERDTreeToggle<CR>   " Ctrl-n toggles NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " only NERDTree open in vim, close
+let NERDTreeShowHidden=1
 
 " Git support for nerdtree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
