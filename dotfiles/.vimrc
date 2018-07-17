@@ -26,7 +26,8 @@ Plugin 'vim-scripts/indentpython.vim'
 " Python code completion
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_autoclose_preview_window_after_completion=1   " close autocomplete win
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> " goto def
+map <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR> " goto def
+let g:ycm_python_binary_path = 'python'     " search for first python exec and attach the file to that env
 
 " Syntax checking on exit
 Plugin 'vim-syntastic/syntastic'
@@ -41,7 +42,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 
 " File directory
-Plugin 'scroolose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
 map <C-n> :NERDTreeToggle<CR>   " Ctrl-n toggles NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " only NERDTree open in vim, close
@@ -99,8 +100,6 @@ nnoremap <C-H> <C-W><C-H>
 " code folding
 set foldmethod=indent
 set foldlevel=99
-
-nnoremap <space> za         " enable folding with spacebar
 
 " Jump to last known position in a file just after opening it
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
