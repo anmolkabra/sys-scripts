@@ -1,0 +1,18 @@
+[submodule "dotfiles/.tmux/plugins/tmux-powerline"]
+	path = dotfiles/.tmux/plugins/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline
+[submodule "dotfiles/.tmux/plugins/tmux-sensible"]
+	path = dotfiles/.tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "dotfiles/.tmux/plugins/tmux-yank"]
+	path = dotfiles/.tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "dotfiles/.tmux/plugins/tpm"]
+	path = dotfiles/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "dotfiles/.tmux/plugins/tmux-resurrect"]
+	path = dotfiles/.tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "dotfiles/.tmux/plugins/tmux-sidebar"]
+	path = dotfiles/.tmux/plugins/tmux-sidebar
+	url = https://github.com/tmux-plugins/tmux-sidebar

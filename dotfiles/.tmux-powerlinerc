@@ -11,9 +11,9 @@
 	# The theme to use.
 	export TMUX_POWERLINE_THEME="tmux-powerline-theme"
 	# Overlay directory to look for themes. There you can put your own themes outside the repo. Fallback will still be the "themes" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_THEMES="~/.themes"
+	export TMUX_POWERLINE_DIR_USER_THEMES="~/.tmux/powerline/themes"
 	# Overlay directory to look for segments. There you can put your own segments outside the repo. Fallback will still be the "segments" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_SEGMENTS=""
+	export TMUX_POWERLINE_DIR_USER_SEGMENTS="~/.tmux/powerline/segments"
 # }
 
 # battery.sh {
