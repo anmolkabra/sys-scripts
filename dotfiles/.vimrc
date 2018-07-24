@@ -67,6 +67,7 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 " """"""""""""""""""""""
 call vundle#end()
 filetype plugin indent on
+
 " Color and Style
 let python_highlight_all=1
 syntax enable				" enable syntax highlighting
@@ -95,13 +96,13 @@ set tabstop=4				" 1 tab == 4 spaces
 set shiftwidth=4			" number of spaces to use for each auto-indent, e.g. >>, << commands
 set softtabstop=4
 
-" split navigations
+" Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" code folding
+" Code folding
 set foldmethod=indent
 set foldlevel=99
 
@@ -121,4 +122,4 @@ autocmd FileType perl,sh,python,vi autocmd BufWrite <buffer> :call StripTrailing
 autocmd BufReadPre <buffer> :let @/ = ""
 
 " Use JavaScript syntax highlighting for JSON files
-autocmd BufRead,BufNewFile *.json,*.sublime-settings setfiletype javascript
+autocmd BufRead,BufNewFile *.json setfiletype javascript
