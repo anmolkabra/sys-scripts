@@ -57,6 +57,6 @@ speed () {
 }
 
 run_segment() {
-    speed wlp2s0 1
+    speed wlp61s0 1
     return 0
 }
