@@ -10,7 +10,18 @@ function website {
     else
         # https://github.com/anmolkabra/anmolkabra.github.io
         # change to website dir on the machine
-        WEBSITE_REPO_DIR="~/Desktop/anmolkabra.github.io"
+        WEBSITE_REPO_DIR=$1
+        if [ ! -d $WEBSITE_REPO_DIR ]; then
+            echo -n "Path $WEBSITE_REPO_DIR doesn't exist, "
+            echo "enter the correct path to the directory"
+            exit
+        fi
+
+        if [ ! -f $WEBSITE_REPO_DIR/Gemfile ]; then
+            echo -n "Directory $WEBSITE_REPO_DIR doesn't have a Gemfile, "
+            echo "the directory isn't a github-pages repo"
+            exit
+        fi
         cd $WEBSITE_REPO_DIR
 
         tmux start-server
@@ -29,7 +40,6 @@ function website {
         tmux select-pane -t website:1.0
 
         # vhost window
-        tmux send-keys -t website:2 "cd /etc/apache2" C-m
         tmux split-window -h -p 30 -t website:2
         tmux send-keys -t website:2 "sudo service apache2 restart" C-m
         tmux select-pane -t website:2.0
