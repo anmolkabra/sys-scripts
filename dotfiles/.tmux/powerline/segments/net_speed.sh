@@ -57,6 +57,8 @@ speed () {
 }
 
 run_segment() {
-    speed wlp61s0 1
+    # get the first interface that has a UP in the first command
+    iface=$(ip -o link show | awk '{print $2,$9}' | awk '{for(i=1;i<=NF;i++) if ($i=="UP") print $(i-1)}' | awk -F: '{print $1}')
+    speed $iface 1
     return 0
 }
