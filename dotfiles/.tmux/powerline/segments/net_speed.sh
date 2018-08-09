@@ -51,7 +51,7 @@ speed () {
     TXDIF_UNIT=$(get_unit "$TXDIF")
     TXDIF=$(convert_data_corr_scale $TXDIF)
 
-    printf "↓ %4.0f %1s/s ↑ %4.0f %1s/s" \
+    printf "$iface ↓ %4.0f %1s/s ↑ %4.0f %1s/s" \
         "$RXDIF" "$RXDIF_UNIT" \
         "$TXDIF" "$TXDIF_UNIT"
 }
