@@ -62,6 +62,9 @@ Plugin 'airblade/vim-gitgutter'
 " Focus works correctly when vim in tmux
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 
+" Coffeescript highlighting
+Plugin 'kchmck/vim-coffee-script'
+
 " """"""""""""""""""""""
 " ...until here
 " """"""""""""""""""""""
@@ -105,6 +108,7 @@ nnoremap <C-H> <C-W><C-H>
 set foldmethod=indent
 set foldlevel=99
 
+set backspace=indent,eol,start
 " Jump to last known position in a file just after opening it
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
