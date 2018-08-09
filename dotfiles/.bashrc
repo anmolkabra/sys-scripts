@@ -113,9 +113,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Miniconda3 installer
-export PATH="$HOME/miniconda3/bin:$PATH"
-
 alias l="ls -AlFh"
 alias ll='ls -alF'
 alias la='ls -A'
@@ -131,3 +128,6 @@ function open () {
 # for anyconnect vpn
 alias vpn="/opt/cisco/anyconnect/bin/vpn"
 alias vpnui="/opt/cisco/anyconnect/bin/vpnui"
+
+# for Miniconda3
+alias conda="~/miniconda3/bin/conda"
