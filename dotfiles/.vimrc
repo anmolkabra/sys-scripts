@@ -82,7 +82,7 @@ set ruler				" display cursor position
 " Searching Criteria
 set ignorecase				" ifnore case in search patterns
 set smartcase				" override ignorecase if search pattern has capital letters
-set wildmode=longest,list		" list all matches
+set wildmode=longest,list	" list all matches
 set showmatch				" highlight matching parentheses/brackets
 set hlsearch				" highlight search results
 set incsearch				" show matches while typing pattern
@@ -101,6 +101,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Remappings
+set timeout timeoutlen=100
+imap jk <Esc>
 
 " Code folding
 set foldmethod=indent
