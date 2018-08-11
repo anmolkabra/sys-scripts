@@ -26,16 +26,14 @@ echo "Getting latest Vundle for vim..."
 cd
 if [ -d .vim ]; then
     sudo chown $USER .vim
-else
-    mkdir -p .vim/bundle
 fi
-cd .vim/bundle
+mkdir -p .vim/bundle && cd .vim/bundle
 git clone --recursive https://github.com/VundleVim/Vundle.vim.git
 
 echo "Getting latest tmux plugins..."
 cd
 cd .tmux
-git submodule update --init
+git submodule update --init --recursive
 
 echo "Installing fonts-powerline"
 sudo apt-get update
