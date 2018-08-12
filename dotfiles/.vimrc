@@ -115,7 +115,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Remappings
-set timeoutlen=100 ttimeoutlen=10
+set timeoutlen=1000 ttimeoutlen=-1
 imap jk <Esc>
 
 " Code folding
