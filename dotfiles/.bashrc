@@ -72,26 +72,8 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -113,21 +95,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias l="ls -AlFh"
-alias ll='ls -alF'
-alias la='ls -A'
-alias ..="cd .."
-alias c="clear"
-alias htop="htop -d 5"
-alias top="top -d 0.5"
+# OPAM configuration
+. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-function open () {
-	xdg-open "$@" &>/dev/null
-}
-
-# for anyconnect vpn
-alias vpn="/opt/cisco/anyconnect/bin/vpn"
-alias vpnui="/opt/cisco/anyconnect/bin/vpnui"
-
-# for Miniconda3
-alias conda="~/miniconda3/bin/conda"
+# Conda activation
+. ~/miniconda3/etc/profile.d/conda.sh
