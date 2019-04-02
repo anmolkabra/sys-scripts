@@ -4,6 +4,7 @@ filetype off
 set encoding=utf-8
 
 let mapleader=","
+let maplocalleader=","
 
 " set the runtime path to include Vundle and set path where Vundle should install plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -106,12 +107,15 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Remappings
-set timeout timeoutlen=100
+set timeoutlen=1000
+set ttimeoutlen=-1
 imap jk <Esc>
 
 " Code folding
 set foldmethod=indent
 set foldlevel=99
+
+set textwidth=80        " Hard-wrap text at 80 when editing file
 
 set backspace=indent,eol,start
 " Jump to last known position in a file just after opening it
@@ -124,7 +128,7 @@ function! StripTrailingWhitespaces()
 	%s/\s\+$//e			" delete trailing whitespaces
 	call cursor(l, c)		" return cursor to previous position
 endfunction
-autocmd FileType perl,sh,python,vi autocmd BufWrite <buffer> :call StripTrailingWhitespaces()
+autocmd FileType perl,sh,python,vi, autocmd BufWrite <buffer> :call StripTrailingWhitespaces()
 
 " Clear searches when opening file
 autocmd BufReadPre <buffer> :let @/ = ""
