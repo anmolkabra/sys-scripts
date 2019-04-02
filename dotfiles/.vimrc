@@ -66,6 +66,15 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 " Coffeescript highlighting
 Plugin 'kchmck/vim-coffee-script'
 
+" Surround commands
+Plugin 'tpope/vim-surround'
+
+" For repeating commands in vim-surround
+Plugin 'tpope/vim-repeat'
+
+" For quick commenting
+Plugin 'tpope/vim-commentary'
+
 " """"""""""""""""""""""
 " ...until here
 " """"""""""""""""""""""
@@ -107,8 +116,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Remappings
-set timeoutlen=1000
-set ttimeoutlen=-1
+set timeoutlen=1000 ttimeoutlen=-1
 imap jk <Esc>
 
 " Code folding
