@@ -1,4 +1,3 @@
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -11,13 +10,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias l="ls -AlFh"
-alias ll='ls -alF'
-alias la='ls -A'
-alias ..="cd .."
+alias ..='cd ..'
 alias c="clear"
 alias htop="htop -d 5"
 alias top="top -d 0.5"
+alias l='ls -AlFh'
+alias la='ls -A'
+alias ll='ls -alF'
+alias tmn='tmux new -s'
+alias tma='tmux attach -t'
 
 function open () {
 	xdg-open "$@" &>/dev/null
