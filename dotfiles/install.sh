@@ -17,18 +17,17 @@ rm ~/.tmux-powerlinerc
 
 echo "Creating symlinks for .vimrc, .tmux*..."
 cd
+ln -s $SOURCE_DIR/.bash_aliases
 ln -s $SOURCE_DIR/.vimrc
 ln -s $SOURCE_DIR/.tmux
 ln -s $SOURCE_DIR/.tmux.conf
 ln -s $SOURCE_DIR/.tmux-powerlinerc
 
-echo "Getting latest Vundle for vim..."
-cd
-if [ -d .vim ]; then
-    sudo chown $USER .vim
-fi
-mkdir -p .vim/bundle && cd .vim/bundle
-git clone --recursive https://github.com/VundleVim/Vundle.vim.git
+echo "Installing Pathogen for vim..."
+git clone --depth=1 git@github.com:amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+cd ~/.vim_runtime
+ln -s $SOURCE_DIR/my_configs.vim
 
 echo "Getting latest tmux plugins..."
 cd
@@ -40,7 +39,7 @@ sudo apt-get update
 sudo apt-get install fonts-powerline
 
 echo "Done!"
-echo "Now open vim and run :PluginInstall, then go to ~/.vim/bundle/YouCompleteMe and run ./install.py --clang-completer"
+echo "Now go to ~/.vim_runtime/my_plugins/ and clone vim plugins"
 echo "For tmux configs, open tmux and run prefix + C-U"
 
 echo "You can use ${SOURCE_DIR}/.bashrc as your bashrc using:"
