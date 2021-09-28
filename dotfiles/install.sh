@@ -17,6 +17,7 @@ rm ~/.tmux-powerlinerc
 
 echo "Creating symlinks for .vimrc, .tmux*..."
 cd
+mkdir -p bin
 ln -s $SOURCE_DIR/.bash_aliases
 ln -s $SOURCE_DIR/.vimrc
 ln -s $SOURCE_DIR/.tmux
