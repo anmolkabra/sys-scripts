@@ -51,5 +51,37 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" other python plugins?
+" vim-latex settings
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
 
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" Disable auto-pairs completion in latex
+autocmd FileType tex,cls     let b:AutoPairs = {}
+
+" this is mostly a matter of taste. but LaTeX looks good with just a bit
+" of indentation.
+set sw=2
+
+" TIP: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels. Very useful!
+set iskeyword+=:"}"
+
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf='xdg-open'
+
+function CompileXeTex()
+    let oldCompileRule=g:Tex_CompileRule_pdf
+    let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+    call Tex_RunLaTeX()
+    let g:Tex_CompileRule_pdf=oldCompileRule
+endfunction
+map <Leader>lx :<C-U>call CompileXeTex()<CR>
