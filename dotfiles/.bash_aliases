@@ -11,6 +11,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias ..='cd ..'
+alias back='cd -'
 alias c="clear"
 alias htop="htop -d 5"
 alias top="top -d 0.5"
@@ -19,9 +20,16 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias tmn='tmux new -s'
 alias tma='tmux attach -t'
+alias tml='tmux ls'
 
 function open () {
 	xdg-open "$@" &>/dev/null
+}
+
+function convert-pdf2png () {
+    pdf_file="$1"
+    png_file="${pdf_file%.*}.png"
+    convert -density 300 ${pdf_file} -quality 90 ${png_file}
 }
 
 # for anyconnect vpn
