@@ -1,3 +1,16 @@
+# Use the following block 
+# case "$(uname)" in
+#     Darwin*)
+#         OS_ENV="mac"
+#         ;;
+#     Linux*)
+#         OS_ENV="ubuntu"
+#         ;;
+#     *)
+#         echo "Neither mac nor ubuntu!"
+#         ;;
+# esac
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -84,9 +97,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Add ~/bin to PATH
-export PATH="/home/anmolkabra/bin:$PATH"
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -98,20 +108,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Conda activation
-# . ~/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/anmolkabra/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/anmolkabra/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/anmolkabra/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/anmolkabra/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Add to PATH
+case "$(uname)" in
+    Darwin*)
+        export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+        export PATH="/Users/anmolkabra/bin:$PATH"
+        ;;
+    Linux*)
+        export PATH="/home/anmolkabra/bin:$PATH"
+        ;;
+    *) ;;
+esac
