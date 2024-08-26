@@ -1,3 +1,16 @@
+# Use the following block 
+# case "$(uname)" in
+#     Darwin*)
+#         OS_ENV="mac"
+#         ;;
+#     Linux*)
+#         OS_ENV="ubuntu"
+#         ;;
+#     *)
+#         echo "Neither mac nor ubuntu!"
+#         ;;
+# esac
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -22,16 +35,30 @@ alias tmn='tmux new -s'
 alias tma='tmux attach -t'
 alias tml='tmux ls'
 
-function open () {
-	xdg-open "$@" &>/dev/null
-}
+case "$(uname)" in
+    Darwin*) ;;
+    Linux*)
+        function open () {
+            xdg-open "$@" &>/dev/null
+        }
 
-function convert-pdf2png () {
-    pdf_file="$1"
-    png_file="${pdf_file%.*}.png"
-    convert -density 300 ${pdf_file} -quality 90 ${png_file}
-}
+        function convert-pdf2png () {
+            pdf_file="$1"
+            png_file="${pdf_file%.*}.png"
+            convert -density 300 ${pdf_file} -quality 90 ${png_file}
+        }
+        ;;
+    *) ;;
+esac
 
 # for anyconnect vpn
-alias vpn="/opt/cisco/anyconnect/bin/vpn"
-alias vpnui="/opt/cisco/anyconnect/bin/vpnui"
+case "$(uname)" in
+    Darwin*)
+        alias vpn="/opt/cisco/secureclient/bin/vpn"
+        ;;
+    Linux*)
+        alias vpn="/opt/cisco/anyconnect/bin/vpn"
+        alias vpnui="/opt/cisco/anyconnect/bin/vpnui"
+        ;;
+    *) ;;
+esac
