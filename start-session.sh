@@ -45,7 +45,7 @@ function website {
         tmux select-pane -t website:2.0
 
         # jekyll window
-        tmux send-keys -t website:3 "sudo bundle update" C-m
+        tmux send-keys -t website:3 "bundle update" C-m
         tmux send-keys -t website:3 "bundle install" C-m
         tmux send-keys -t website:3 "bundle exec jekyll serve --watch" C-m
 
