@@ -76,7 +76,14 @@ set sw=2
 set iskeyword+=:"}"
 
 let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='xdg-open'
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin"
+    let g:Tex_ViewRule_pdf='open'
+  elseif s:uname == "Linux"
+    let g:Tex_ViewRule_pdf='xdg-open'
+  endif
+endif
 
 function CompileXeTex()
     let oldCompileRule=g:Tex_CompileRule_pdf
