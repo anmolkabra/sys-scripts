@@ -1,0 +1,14 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.startupEditor": "none",
+    "editor.fontFamily": "FiraCode",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontFamily": "FiraCode",
+    "terminal.integrated.fontSize": 14,
+    "security.workspace.trust.untrustedFiles": "open",
+    "vim.surround": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true
+}

@@ -9,6 +9,17 @@ echo "================================="
 
 echo "\nInstalling all dotfiles except .bashrc into the home dir..."
 
+case "$(uname)" in
+    Darwin*)
+        echo "Adding user vscode settings.json..."
+        vscode_user_settings_dir="~/Library/Application Support/Code/User/"
+        rm ${vscode_user_settings_dir}/settings.json
+        mkdir -p ${vscode_user_settings_dir}
+        ln -s $SOURCE_DIR/vscode/settings.json ${vscode_user_settings_dir}/settings.json
+        ;;
+    *) ;;
+esac
+
 echo "Removing vim and tmux configs..."
 rm ~/.bash_aliases
 rm -rf ~/.vim_runtime
