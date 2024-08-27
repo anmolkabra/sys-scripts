@@ -10,6 +10,8 @@ echo "================================="
 echo "\nInstalling all dotfiles except .bashrc into the home dir..."
 
 echo "Removing vim and tmux configs..."
+rm ~/.bash_aliases
+rm -rf ~/.vim_runtime
 rm ~/.vimrc
 rm -rf ~/.tmux
 rm ~/.tmux.conf
@@ -36,11 +38,30 @@ cd .tmux
 git submodule update --init --recursive
 
 echo "Installing fonts-powerline"
-sudo apt-get update
-sudo apt-get install fonts-powerline
+case "$(uname)" in
+    Darwin*)
+        # Install powerline from source
+        git clone --depth=1 git@github.com:powerline/fonts.git
+        cd fonts
+        sh install.sh
+        cd ..
+        rm -rf fonts
+        ;;
+    Linux*)
+        sudo apt-get update
+        sudo apt-get install fonts-powerline
+        ;;
+    *) ;;
+esac
 
 echo "Done!"
-echo "Now go to ~/.vim_runtime/my_plugins/ and clone vim plugins"
+echo "Now go to ~/.vim_runtime/my_plugins/ and clone these vim plugins:
+
+https://github.com/vim-airline/vim-airline
+https://github.com/vim-airline/vim-airline-themes
+https://github.com/vim-syntastic/syntastic
+https://github.com/vim-latex/vim-latex
+"
 echo "For tmux configs, open tmux and run prefix + C-U"
 
 echo "You can use ${SOURCE_DIR}/.bashrc as your bashrc using:"
