@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-# Sets up useful commands using homebrew: 
+# Sets up useful commands using homebrew:
 brew install htop tmux vim wget
+
+brew install llvm
+echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.bash_profile
 
 # TeX install
 brew install --cask basictex
